@@ -1,16 +1,86 @@
+//organized array to be more readable
 let pokemonList = [
-  {pokemonName: 'Articuno', pokemonHeight: 1.7, pokemonType: ['Ice', 'Flying']},
-  {pokemonName: 'Zapdos', pokemonHeight: 1.6, pokemonType: ['Electric', 'Flying']},
-  {pokemonName: 'Moltres', pokemonHeight: 2, pokemonType: ['Fire', 'Flying']},
-  {pokemonName: 'Bulbasaur', pokemonHeight: 0.7, pokemonType: ['Grass', 'Poison']},
-  {pokemonName: 'Ivysaur', pokemonHeight: 1, pokemonType: ['Grass', 'Poison']},
-  {pokemonName: 'Venusaur', pokemonHeight: 2, pokemonType: ['Grass', 'Poison']},
-  {pokemonName: 'Charmander', pokemonHeight: 0.6, pokemonType: 'Fire'},
-  {pokemonName: 'Charmeleon', pokemonHeight: 1.1, pokemonType: 'Fire'},
-  {pokemonName: 'Charizard', pokemonHeight: 1.7, pokemonType: ['Fire', 'Flying']},
-  {pokemonName: 'Squirtle', pokemonHeight: 0.5, pokemonType: 'Water'},
-  {pokemonName: 'Wartortle', pokemonHeight: 1, pokemonType: 'Water'},
-  {pokemonName: 'Blastoise', pokemonHeight: 1.6, pokemonType: 'Water'},
-  {pokemonName: 'Pikachu', pokemonHeight: 0.4, pokemonType: 'Electric'},
-  {pokemonName: 'Raichu', pokemonHeight: 0.8, pokemonType: 'Electric'}
-]
+  {
+    pokemonName: 'Articuno',
+    pokemonHeight: 1.7,
+    pokemonType: ['Ice', 'Flying']
+  },
+  {
+    pokemonName: 'Zapdos',
+    pokemonHeight: 1.6,
+    pokemonType: ['Electric', 'Flying']
+  },
+  {
+    pokemonName: 'Moltres',
+    pokemonHeight: 2,
+    pokemonType: ['Fire', 'Flying']
+  },
+  {
+    pokemonName: 'Bulbasaur',
+    pokemonHeight: 0.7,
+    pokemonType: ['Grass', 'Poison']
+  },
+  {
+    pokemonName: 'Ivysaur',
+    pokemonHeight: 1,
+    pokemonType: ['Grass', 'Poison']
+  },
+  {
+    pokemonName: 'Venusaur',
+    pokemonHeight: 2,
+    pokemonType: ['Grass', 'Poison']
+  },
+  {
+    pokemonName: 'Charmander',
+    pokemonHeight: 0.6,
+    pokemonType: 'Fire'
+  },
+  {
+    pokemonName: 'Charmeleon',
+    pokemonHeight: 1.1,
+    pokemonType: 'Fire'},
+  {
+    pokemonName: 'Charizard',
+    pokemonHeight: 1.7,
+    pokemonType: ['Fire', 'Flying']
+  },
+  {
+    pokemonName: 'Squirtle',
+    pokemonHeight: 0.5,
+    pokemonType: 'Water'
+  },
+  {
+    pokemonName: 'Wartortle',
+    pokemonHeight: 1,
+    pokemonType: 'Water'
+  },
+  {
+    pokemonName: 'Blastoise',
+    pokemonHeight: 1.6,
+    pokemonType: 'Water'
+  },
+  {
+    pokemonName: 'Pikachu',
+    pokemonHeight: 0.4,
+    pokemonType: 'Electric'
+  },
+  {
+    pokemonName: 'Raichu',
+    pokemonHeight: 0.8,
+    pokemonType: 'Electric'
+  }
+];
+
+//for loop that runs the length of the pokemonList array - added in text
+for (let i = 0; i < pokemonList.length; i++) 
+{
+  if (pokemonList[i].pokemonHeight < 1) { 
+    document.write(pokemonList[i].pokemonName + " (height: " + pokemonList[i].pokemonHeight + ") - This is a tiny Pokemon" + "<br>");
+  }
+  else if (pokemonList[i].pokemonHeight > 1 && pokemonList[i].pokemonHeight < 1.7) {
+    document.write(pokemonList[i].pokemonName + " (height: " + pokemonList[i].pokemonHeight + ") - This is an average sized Pokemon" + "<br>");
+  }
+  else {
+    document.write(pokemonList[i].pokemonName + " (height: " + pokemonList[i].pokemonHeight + ") - Wow, that's a big Pokemon!" + "<br>");
+  }
+}
