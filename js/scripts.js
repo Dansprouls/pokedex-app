@@ -72,6 +72,7 @@ let pokemonList = [
 ];
 
 //for loop that runs the length of the pokemonList array - added in text
+/* don't want to delete until assignment is approved
 for (let i = 0; i < pokemonList.length; i++) 
 {
   if (pokemonList[i].pokemonHeight < 1) { 
@@ -84,3 +85,18 @@ for (let i = 0; i < pokemonList.length; i++)
     document.write(pokemonList[i].pokemonName + " (height: " + pokemonList[i].pokemonHeight + ") - Wow, that's a big Pokemon!" + "<br>");
   }
 }
+*/
+
+//new loop using forEach
+pokemonList.forEach(function(pokemon){
+  if (pokemon.pokemonHeight < 1) { 
+    document.write(pokemon.pokemonName + " (height: " + pokemon.pokemonHeight + ") - This is a tiny Pokemon" + "<br>");
+  }
+  else if (pokemon.pokemonHeight > 1 && pokemon.pokemonHeight < 1.7) {
+    document.write(pokemon.pokemonName + " (height: " + pokemon.pokemonHeight + ") - This is an average sized Pokemon" + "<br>");
+  }
+  else {
+    document.write(pokemon.pokemonName + " (height: " + pokemon.pokemonHeight + ") - Wow, that's a big Pokemon!" + "<br>");
+  }
+})
+
