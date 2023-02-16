@@ -1,4 +1,6 @@
 //organized array to be more readable
+let pokemonRepository = (function(){
+
 let pokemonList = [
   {
     pokemonName: 'Articuno',
@@ -71,6 +73,20 @@ let pokemonList = [
   }
 ];
 
+  function getAll() {
+    return pokemonList;
+  }
+  function add (item) {
+    pokemonList.push(item);
+  }
+
+  return {
+    getAll: getAll,
+    add: add
+  }
+
+})();
+
 //for loop that runs the length of the pokemonList array - added in text
 /* don't want to delete until assignment is approved
 for (let i = 0; i < pokemonList.length; i++) 
@@ -88,7 +104,7 @@ for (let i = 0; i < pokemonList.length; i++)
 */
 
 //new loop using forEach
-pokemonList.forEach(function(pokemon){
+pokemonRepository.getAll().forEach(function(pokemon){
   if (pokemon.pokemonHeight < 1) { 
     document.write(pokemon.pokemonName + " (height: " + pokemon.pokemonHeight + ") - This is a tiny Pokemon" + "<br>");
   }
