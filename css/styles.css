@@ -1,11 +1,65 @@
+
 :root {
   box-sizing: border-box;
+  --main-yellow: #ffcb05;
+  --main-blue: #2a75bb;
+  --accent-yellow: #c7a008;
+  --accent-blue: #3c5aa6;
 }
 
 body {
-  background-color: #2a75bb;
-  color: #ffcb05;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--main-yellow);
+  /* background-color: var(--main-blue); */
+  font-family:'Courier New', Courier, monospace;
   font-weight: 600;
   line-height: 2rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  -webkit-text-stroke: 3px var(--accent-blue);
+}
+
+.pokemon-list {
+  list-style-type: none;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.pokemon-name-list {
+  font-family: 'Courier New', Courier, monospace;
+  width: 40%;
+  list-style-type: none;
+  padding: .5rem;
+  font-size: 1.1rem;
+  font-weight: 900;
+  border-radius: 10px;
+  margin-bottom: .8rem;
+  border: 3px solid var(--accent-blue);
+  color: black;
+  background-color: var(--main-yellow);
+  box-shadow: 3px 3px 3px var(--accent-blue);
+}
+
+.pokemon-name-list:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: var(--accent-blue);
+  color: white;
+  box-shadow: 3px 3px 3px var(--accent-yellow);
+  border-color: var(--accent-yellow);
+}
+
+.pokemon-name-list:active {
+  transform: scale(1.1);
+  background-color: var(--accent-blue);
+  color: white;
+  box-shadow: 3px 3px 3px var(--accent-yellow);
+  border-color: var(--accent-yellow);
+  opacity: .7;
 }
