@@ -87,7 +87,9 @@ let pokemonList = [
     button.classList.add('pokemon-name-list');
     listItem.appendChild(button);
     pokedexList.appendChild(listItem);
-    button.addEventListener('click', showDetails)
+    button.addEventListener('click', function(){
+      showDetails(pokemon);
+    })
   }
 
   function showDetails(pokemon) {
