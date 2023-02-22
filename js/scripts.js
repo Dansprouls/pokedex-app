@@ -1,8 +1,11 @@
 //organized array to be more readable
-let pokemonRepository = (function(){
+//IIFE to manage scope
+let pokemonRepository = (function(){ 
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  let modalContainer = document.querySelector('#pokemon-modal-container');
 
+  //extra validation when adding new pokemon to the array
   function add (pokemon) {
     if (
       typeof pokemon === 'object' &&
@@ -19,7 +22,7 @@ let pokemonRepository = (function(){
   }
 
   function addListItem(pokemon) {
-    let pokedexList = document.querySelector('.pokemon-list');
+    let pokedexList = document.querySelector('.pokemon-list'); //pokedexList = UL in html
     let listItem = document.createElement('li');
     let button = document.createElement('button');
     button.innerText = pokemon.name;
@@ -27,10 +30,12 @@ let pokemonRepository = (function(){
     listItem.appendChild(button);
     pokedexList.appendChild(listItem);
     button.addEventListener('click', function(event){
-      showDetails(pokemon);
+      showDetails(pokemon); //what is the event param?
     });
   }
 
+  //loads list of pokemon from API - uses JSON to communicate with API
+  //may need some walkthrough on this section
   function loadList() {
     return fetch(apiUrl).then(function (response) {
       return response.json();
@@ -48,6 +53,8 @@ let pokemonRepository = (function(){
     })
   }
 
+  //telling which details to load in?
+  //uses promises 
   function loadDetails(item) {
     let url = item.detailsUrl;
     return fetch(url).then(function(response) {
@@ -64,8 +71,69 @@ let pokemonRepository = (function(){
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function () {
       console.log(item);
+
     })
   }
+
+  /* struggling here */
+  function showPokemonModal(title, height, type, img){
+    /* let modalContainer = document.querySelector('#pokemon-modal-container'); */
+    modalContainer.innerHTML = '';
+    let pokemonModal = document.createElement('div');
+    pokemonModal.classList.add('pokemon-modal');
+
+    let closeButton = document.createElement('button');
+    closeButton.classList.add('modal-close');
+    closeButton.innerText = 'Close';
+    closeButton.addEventListener('click', hideModal);
+
+    let modalTitle = document.createElement('h1');
+    modalTitle.innerText = title; //should it be pokemon.name?
+
+    let modalHeight = document.createElement('p');
+    modalHeight.innerText = height;
+
+    let modalType = document.createElement('p');
+    modalType.innerText = type;
+
+    let modalImg = document.createElement('img');
+    modalImg.src='item.imageURL';
+
+    pokemonModal.appendChild(closeButton);
+    pokemonModal.appendChild(modalTitle);
+    pokemonModal.appendChild(modalHeight);
+    pokemonModal.appendChild(modalType);
+    pokemonModal.appendChild(modalImg);
+    modalContainer.appendChild(pokemonModal);
+
+
+
+    modalContainer.classList.add('is-visible');
+    }
+
+    function hideModal() {
+      /* let modalContainer = document.querySelector('#pokemon-modal-container'); */
+      modalContainer.classList.remove('is-visible');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      /* let modalContainer = document.querySelector('#pokemon-modal-container'); */
+      if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+        hideModal();
+      }
+    });
+
+    /* let modalContainer = document.querySelector('#pokemon-modal-container'); */
+    modalContainer.addEventListener('click', (e) => {
+      let target = e.target;
+      if (target === modalContainer) {
+        hideModal();
+      }
+    });
+
+    document.querySelector('.pokemon-list').addEventListener('click', () => {
+      showPokemonModal();
+    });
 
   return {
     add: add,
@@ -73,7 +141,8 @@ let pokemonRepository = (function(){
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showDetails: showDetails
+    showDetails: showDetails,
+    showPokemonModal: showPokemonModal //do i need?
   };
 })();
 
