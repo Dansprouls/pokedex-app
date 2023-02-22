@@ -62,7 +62,7 @@ let pokemonRepository = (function(){
     }).then(function(details) {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = details.types;
+      item.types = details.types.map((type) => type.type.name); //may need some help understanding this
     }).catch(function (e) {
       console.error(e);
     });
@@ -70,13 +70,14 @@ let pokemonRepository = (function(){
 
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function () {
-      console.log(item);
+      showPokemonModal(item);
 
     })
   }
 
   /* struggling here */
-  function showPokemonModal(title, height, type, img){
+  function showPokemonModal(pokemon){
+    const { name, height, types, imageUrl } = pokemon;
     /* let modalContainer = document.querySelector('#pokemon-modal-container'); */
     modalContainer.innerHTML = '';
     let pokemonModal = document.createElement('div');
@@ -84,25 +85,30 @@ let pokemonRepository = (function(){
 
     let closeButton = document.createElement('button');
     closeButton.classList.add('modal-close');
-    closeButton.innerText = 'Close';
+    closeButton.innerText = 'X';
     closeButton.addEventListener('click', hideModal);
 
     let modalTitle = document.createElement('h1');
-    modalTitle.innerText = title; //should it be pokemon.name?
+    modalTitle.classList.add('modal-content', 'modal-title');
+    modalTitle.innerText = name;
 
     let modalHeight = document.createElement('p');
-    modalHeight.innerText = height;
+    modalHeight.classList.add('modal-content', 'modal-list-item');
+    //modalHeight.innerText = height;
+    modalHeight.innerText = 'Height: ' + height;
 
-    let modalType = document.createElement('p');
-    modalType.innerText = type;
+    let modalTypes = document.createElement('p');
+    modalTypes.classList.add('modal-content', 'modal-list-item');
+    modalTypes.innerText = 'Type(s): ' + types;
 
     let modalImg = document.createElement('img');
-    modalImg.src='item.imageURL';
+    modalImg.classList.add('modal-content', 'modal-img');
+    modalImg.src = imageUrl;
 
     pokemonModal.appendChild(closeButton);
     pokemonModal.appendChild(modalTitle);
     pokemonModal.appendChild(modalHeight);
-    pokemonModal.appendChild(modalType);
+    pokemonModal.appendChild(modalTypes);
     pokemonModal.appendChild(modalImg);
     modalContainer.appendChild(pokemonModal);
 
@@ -152,4 +158,3 @@ pokemonRepository.loadList().then(function() {
   });
 });
 
-  
