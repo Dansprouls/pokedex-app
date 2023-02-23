@@ -137,10 +137,6 @@ let pokemonRepository = (function(){
       }
     });
 
-    document.querySelector('.pokemon-list').addEventListener('click', () => {
-      showPokemonModal();
-    });
-
   return {
     add: add,
     getAll: getAll,
