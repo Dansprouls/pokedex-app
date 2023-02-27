@@ -28,10 +28,15 @@ body {
   -webkit-text-stroke: 3px var(--accent-blue);
 }
 
+.logo-space {
+  letter-spacing: 1rem;
+}
+
 .pokemon-list {
   list-style-type: none;
   text-align: center;
   margin-top: 1rem;
+  padding-inline-start: 0px;
 }
 
 .pokemon-name-list {

@@ -6,13 +6,13 @@ let pokemonRepository = (function(){
   let modalContainer = document.querySelector('#pokemon-modal-container');
 
   //extra validation when adding new pokemon to the array
-  function add (pokemon) {
+  function add(pokemon) {
     if (
       typeof pokemon === 'object' &&
       'name' in pokemon 
     ) {
       pokemonList.push(pokemon);
-    }else {
+    } else {
       console.log('pokemon is not correct');
     } 
   }
