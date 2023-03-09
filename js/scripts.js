@@ -5,6 +5,16 @@ let pokemonRepository = (function(){
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   let modalContainer = document.querySelector('#pokemon-modal-container');
 
+  //search for pokemon name in search bar
+  let searchButton = $('.btn-warning');
+  searchButton.on('click', function() {
+    let pokedexList = $('.pokemon-list');
+      pokedexList.empty();
+      getPokemonName($('.form-control').val()).forEach(function(pokemon) {
+        addListItem(pokemon);
+      });
+  })
+
   //extra validation when adding new pokemon to the array
   function add(pokemon) {
     if (
@@ -19,6 +29,12 @@ let pokemonRepository = (function(){
 
   function getAll() {
     return pokemonList;
+  }
+
+  function getPokemonName(input) {
+    return pokemonList.filter(function(pokemon){
+      return pokemon.name.toLowerCase().includes(input.toLowerCase());
+    });
   }
 
   function addListItem(pokemon) {
@@ -167,6 +183,7 @@ let pokemonRepository = (function(){
   return {
     add: add,
     getAll: getAll,
+    getPokemonName: getPokemonName,
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
