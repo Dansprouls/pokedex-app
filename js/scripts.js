@@ -1,4 +1,3 @@
-//organized array to be more readable
 //IIFE to manage scope
 let pokemonRepository = (function(){ 
   let pokemonList = [];
