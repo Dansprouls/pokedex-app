@@ -22,6 +22,7 @@ nav {
   z-index: 2;
   background: linear-gradient(90deg, var(--main-blue), #7bb1e4);
   margin-top: 1rem;
+  display: flex;
 }
 
 .navbar-brand {
@@ -30,12 +31,17 @@ nav {
   -webkit-text-stroke: 1px var(--accent-blue);
   font-size: 3rem;
   letter-spacing: .2rem;
+  flex: 8;
 }
 
 .navbar-brand:hover {
   font-family: 'Pokemon Solid', sans-serif;
   color: var(--main-yellow);
   -webkit-text-stroke: 1px var(--accent-blue);
+}
+
+.search-bar {
+  width: 300px;
 }
 
 .btn-warning {
