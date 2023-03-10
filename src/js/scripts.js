@@ -48,7 +48,6 @@ let pokemonRepository = (function(){
   }
 
   //loads list of pokemon from API - uses JSON to communicate with API
-  //may need some walkthrough on this section
   function loadList() {
     return fetch(apiUrl).then(function (response) {
       return response.json();
@@ -66,8 +65,7 @@ let pokemonRepository = (function(){
     })
   }
 
-  //telling which details to load in?
-  //uses promises 
+  //telling which details to load in
   function loadDetails(item) {
     let url = item.detailsUrl;
     return fetch(url).then(function(response) {
@@ -75,7 +73,7 @@ let pokemonRepository = (function(){
     }).then(function(details) {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = details.types.map((type) => type.type.name); //may need some help understanding this
+      item.types = details.types.map((type) => type.type.name); 
     }).catch(function (e) {
       console.error(e);
     });
@@ -87,7 +85,6 @@ let pokemonRepository = (function(){
     })
   }
 
-  /* need to figure out bootstrap */
   function showPokemonModal(pokemon) {
     let modalTitle = $(`.modal-title`);
     let modalBody = $(`.modal-body`);
