@@ -8,7 +8,7 @@ let pokemonRepository = (function(){
   searchButton.on('click', function() {
     let pokedexList = $('.pokemon-list');
       pokedexList.empty();
-      getPokemonName($('.form-control').val()).forEach(function(pokemon) {
+      getPokemonListByName($('.form-control').val()).forEach(function(pokemon) {
         addListItem(pokemon);
       });
   })
@@ -29,7 +29,7 @@ let pokemonRepository = (function(){
     return pokemonList;
   }
 
-  function getPokemonName(input) {
+  function getPokemonListByName(input) {
     return pokemonList.filter(function(pokemon){
       return pokemon.name.toLowerCase().includes(input.toLowerCase());
     });
@@ -100,7 +100,7 @@ let pokemonRepository = (function(){
   return {
     add: add,
     getAll: getAll,
-    getPokemonName: getPokemonName,
+    getPokemonListByName: getPokemonListByName,
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
